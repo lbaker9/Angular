@@ -1,13 +1,9 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="jumbotron">
-    <h1>Angular 2 QuickStart</h1>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <!-- Angular2 Code -->
-        <my-app>Loading...</my-app>
-        <!-- Angular2 Code -->
-    </div>
+
+<div class="row" ng-controller="HomeController">
+   <div class="col-sm-12">
+       {{Message}}
+   </div>
 </div>

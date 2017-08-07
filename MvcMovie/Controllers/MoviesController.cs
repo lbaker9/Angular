@@ -14,8 +14,10 @@ namespace MvcMovie.Controllers
     {
         private MovieDBContext db = new MovieDBContext();
 
+public ActionResult Index()
+        { return View("~/Views/Movies/Index.cshtml"); }
         // GET: Movies
-    public ActionResult Index(string movieGenre, string searchString)
+    public ActionResult getMovies(string movieGenre, string searchString)
 {
     var GenreLst = new List<string>();
 
@@ -32,14 +34,15 @@ namespace MvcMovie.Controllers
     if (!String.IsNullOrEmpty(searchString))
     {
         movies = movies.Where(s => s.Title.Contains(searchString));
+        
     }
 
     if (!string.IsNullOrEmpty(movieGenre))
     {
         movies = movies.Where(x => x.Genre == movieGenre);
     }
-
-    return View(movies);
+          
+            return Json(movies, JsonRequestBehavior.AllowGet);
 }
 
         // GET: Movies/Details/5

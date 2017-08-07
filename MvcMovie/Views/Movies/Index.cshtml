@@ -6,9 +6,14 @@
 
 
     <head>
-        <link href="@Url.Content("~/Content/themes/StyleSheet1.css")"
-              rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" url('../../Content/themes/StyleSheet1.css');>
     </head>
+
+    <body>
+
+    <style>
+        .ng-binding{margin: 50px;}
+    </style>
 
     <h2>Index</h2>
 
@@ -16,65 +21,67 @@
     @Html.ActionLink("Create New", "Create")
 
     @using (Html.BeginForm("Index", "Movies", FormMethod.Get))
+
     {
         <p>
-            Genre: @Html.DropDownList("movieGenre", "All")
+            @*Genre: @Html.DropDownList("movieGenre", "All")*@
             Title: @Html.TextBox("SearchString")
             <input type="submit" value="Filter" />
         </p>
     }
 
-    <table class="table">
-       
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rating)
-            </th>
-            <th></th>
-        </tr>
+        <table class="table">
+            <tr>
+                <th>
+                    Title:
+                </th>
+                <th>
+                    Release Date:
+                </th>
+                <th>
+                    Genre:
+                </th>
+                <th>
+                    Price:
+                </th>
+                <th>
+                    Ratting:
+                </th>
+                <th></th>
+            </tr>
+            </div>
+            </div>
+        </table>
 
-      
- @foreach (var item in Model) {
+<div class="main" ng-controller="moviecontroller">
+    <div ng-repeat="Movie in movieList">
+
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                   {{Movie.Title}}
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    {{Movie.ReleaseDate}}
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Genre)
+                    {{Movie.Genre}}
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    {{Movie.Price}}
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Rating)
+                   {{Movie.Rating}}
                 </td>
-                <td>
+                @*<td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
-                <td></td>
-            </tr>
-        }
+                </td>*@
+                    <td></td>
+                </tr>
+         
+    </div>
+    </div>
+</body>
 
-    </table>
-</div>
 
-
-
-<script src="js/controllers/MainController.js"></script>
